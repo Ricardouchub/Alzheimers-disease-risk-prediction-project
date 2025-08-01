@@ -3,14 +3,6 @@ import pandas as pd
 import numpy as np
 import shap
 import matplotlib.pyplot as plt
-import seaborn as sns
-from sklearn.preprocessing import StandardScaler
-from sklearn.pipeline import Pipeline
-from sklearn.compose import ColumnTransformer
-from sklearn.impute import SimpleImputer
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.cluster import KMeans
-import joblib
 
 # --- 1. Page Configuration ---
 st.set_page_config(page_title="Alzheimer Risk Predictor", layout="wide")
