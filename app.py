@@ -1,4 +1,3 @@
-# app.py
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -8,22 +7,36 @@ import matplotlib.pyplot as plt
 
 st.set_page_config(layout="wide")
 
-# CSS TO WIDEN THE SIDEBAR
-st.markdown(
-    """
+# --- Custom Styling ---
+st.markdown("""
     <style>
+    body {
+        background-color: #f9f9f9;
+    }
+    .block-container {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+    .stButton>button {
+        color: white;
+        background-color: #1F618D;
+        border-radius: 8px;
+        height: 3em;
+        width: 100%;
+        font-size: 1.2em;
+    }
+    .stButton>button:hover {
+        background-color: #154360;
+    }
     [data-testid="stSidebar"] {
         width: 400px !important;
     }
     </style>
-    """,
-    unsafe_allow_html=True,
-)
+""", unsafe_allow_html=True)
 
-# --- 1. Load Models and Data ---
+# --- Load Models and Data ---
 @st.cache_resource
 def load_assets():
-    """Loads the trained models and preprocessor."""
     model_pipeline = joblib.load('alzheimer_model_pipeline.pkl')
     kmeans_model = joblib.load('kmeans_model.pkl')
     preprocessor = joblib.load('preprocessor.pkl')
@@ -31,59 +44,52 @@ def load_assets():
     return model_pipeline, kmeans_model, preprocessor, X_train_data
 
 model, kmeans, preprocessor, X_train = load_assets()
-
-# Pre-process the training data once for the SHAP explainer
 X_train_processed = preprocessor.transform(X_train)
 
-# --- 2. App Title and Introduction ---
-st.title("Alzheimer's Disease Risk & Phenotype Predictor")
+# --- Title ---
+st.markdown("""
+    <h1 style='text-align: center; color: #1F618D;'>🧠 Alzheimer's Risk & Phenotype Predictor</h1>
+    <h4 style='text-align: center; color: grey;'>Predict and understand the potential risk using patient lifestyle, clinical and cognitive features</h4>
+    <br>
+""", unsafe_allow_html=True)
 
-# --- NEW: PROJECT INFORMATION EXPANDER ---
+# --- Expander with Instructions ---
 with st.expander("How to use", expanded=True):
     st.write("""
-        This application leverages a machine learning model to provide a comprehensive risk assessment for Alzheimer's disease based on a patient's clinical, demographic, and lifestyle data. Beyond a simple prediction, it also offers two key insights:
-        
-        1.  Factors that contributes to a patient's risk score.
-        2.  Patient Phenotyping for high-risk individuals, helping to understand the underlying nature of their risk.
+        This application uses a machine learning model to estimate Alzheimer's disease risk.
 
         **Instructions:**
-        1.  Use the sidebar on the left to input the patient's data.
-        2.  If a piece of information is not available, simply check the **"Unknown"** box next to it. The model is trained to handle missing data.
-        3.  Click the **"Predict"** button at the bottom of the sidebar to see the results.
+        1. Fill out the form in the sidebar.
+        2. Use "Unknown" if data is unavailable.
+        3. Click "Predict Risk" to view results.
 
-        **Results Explained:**
-        - **Alzheimer's Risk Score:** A percentage indicating the model's estimated probability of an Alzheimer's diagnosis.
-        - **Prediction Explanation:** A waterfall plot showing the factors that increase risk (in red) and decrease risk (in blue).
-        - **Patient Phenotype Profile:** For patients with a risk score above 50%, a potential clinical profile is suggested based on patterns found in the data.
+        **Results include:**
+        - Risk Score
+        - Waterfall Plot of contributing features
+        - Phenotype categorization if high-risk
     """)
 
-# --- Sidebar Header ---
+# --- Sidebar ---
 st.sidebar.header("Patient Data Input")
-st.sidebar.write("For any unavailable data, check the 'Unknown' box.")
+st.sidebar.write("Use 'Unknown' if data is unavailable.")
 
-# --- 3. User Input Features ---
+# --- User Input Function ---
 def user_input_features():
-    """Creates sidebar widgets for user input and returns a DataFrame."""
-    
-    # --- Helper function to create input rows ---
     def create_input_row(label, widget_type, options, default, key_suffix, col_widths=[3,2]):
         c1, c2 = st.sidebar.columns(col_widths)
         is_unknown = c2.checkbox("Unknown", key=f"{key_suffix}_unknown")
-        
         if widget_type == 'slider':
             value = c1.slider(label, options[0], options[1], default, disabled=is_unknown, key=f"{key_suffix}_slider")
         elif widget_type == 'selectbox':
             value = c1.selectbox(label, options, index=options.index(default) if default in options else 0, disabled=is_unknown, key=f"{key_suffix}_selectbox")
-        
         return np.nan if is_unknown else value
 
-    # --- Create all inputs using the helper function ---
     st.sidebar.subheader("Demographics")
     Age = create_input_row('Age', 'slider', (60, 90), 75, 'age')
     Gender = create_input_row('Gender', 'selectbox', ('Male', 'Female'), 'Male', 'gender')
     Ethnicity = create_input_row('Ethnicity', 'selectbox', ('Caucasian', 'African American', 'Asian', 'Other'), 'Caucasian', 'ethnicity')
     EducationLevel = create_input_row('Education Level', 'selectbox', ('None', 'High School', "Bachelor's", 'Higher'), 'High School', 'education')
-    
+
     st.sidebar.subheader("Lifestyle")
     BMI = create_input_row('BMI', 'slider', (15.0, 40.0), 25.0, 'bmi')
     Smoking = create_input_row('Smoking Status', 'selectbox', ('No', 'Yes'), 'No', 'smoking')
@@ -105,14 +111,14 @@ def user_input_features():
     CholesterolLDL = create_input_row('LDL Cholesterol', 'slider', (50, 200), 100, 'chldl')
     CholesterolHDL = create_input_row('HDL Cholesterol', 'slider', (20, 100), 50, 'chhdl')
     CholesterolTriglycerides = create_input_row('Triglycerides', 'slider', (50, 400), 150, 'chtrig')
-    
+
     st.sidebar.subheader("Cognitive & Functional Assessments")
     MMSE = create_input_row('MMSE Score', 'slider', (0, 30), 25, 'mmse')
     FunctionalAssessment = create_input_row('Functional Assessment', 'slider', (0.0, 10.0), 8.0, 'funcassess')
     MemoryComplaints = create_input_row('Memory Complaints', 'selectbox', ('No', 'Yes'), 'No', 'memcomp')
     BehavioralProblems = create_input_row('Behavioral Problems', 'selectbox', ('No', 'Yes'), 'No', 'behavprob')
     ADL = create_input_row('ADL Score', 'slider', (0.0, 10.0), 9.0, 'adl')
-    
+
     st.sidebar.subheader("Symptoms")
     Confusion = create_input_row('Confusion', 'selectbox', ('No', 'Yes'), 'No', 'confusion')
     Disorientation = create_input_row('Disorientation', 'selectbox', ('No', 'Yes'), 'No', 'disorientation')
@@ -120,7 +126,6 @@ def user_input_features():
     DifficultyCompletingTasks = create_input_row('Difficulty w/ Tasks', 'selectbox', ('No', 'Yes'), 'No', 'taskdiff')
     Forgetfulness = create_input_row('Forgetfulness', 'selectbox', ('No', 'Yes'), 'No', 'forgetful')
 
-    # --- Create the dictionary for the DataFrame ---
     data = {
         'Age': Age, 'Gender': np.nan if pd.isna(Gender) else (1 if Gender == 'Female' else 0),
         'Ethnicity': np.nan if pd.isna(Ethnicity) else ['Caucasian', 'African American', 'Asian', 'Other'].index(Ethnicity),
@@ -146,97 +151,81 @@ def user_input_features():
         'DifficultyCompletingTasks': np.nan if pd.isna(DifficultyCompletingTasks) else (1 if DifficultyCompletingTasks == 'Yes' else 0),
         'Forgetfulness': np.nan if pd.isna(Forgetfulness) else (1 if Forgetfulness == 'Yes' else 0),
     }
-    features = pd.DataFrame(data, index=[0])
-    return features
+    return pd.DataFrame(data, index=[0])
 
 input_df = user_input_features()
 
-# --- 4. Main Panel: Prediction and Explanation ---
-st.header("Prediction Results")
+# --- Prediction ---
+st.markdown("## 🧪 Prediction Results")
+col1, col2 = st.columns([1, 2])
 
-if st.sidebar.button('Predict'):
-    # Get prediction probability
+if st.sidebar.button('🔍 Predict Risk'):
     prediction_proba = model.predict_proba(input_df)
     risk_score = prediction_proba[0][1]
 
-    # --- Display Risk Score ---
-    st.subheader(f"Alzheimer's Risk Score: {risk_score:.0%}")
-    if risk_score > 0.6:
-        st.error("High Risk")
-    elif risk_score > 0.4:
-        st.warning("Moderate Risk")
-    else:
-        st.success("Low Risk")
+    with col1:
+        st.metric(label="Alzheimer's Risk Score", value=f"{risk_score:.0%}")
+        if risk_score > 0.6:
+            st.error("🔴 High Risk")
+        elif risk_score > 0.4:
+            st.warning("🟡 Moderate Risk")
+        else:
+            st.success("🟢 Low Risk")
 
-    # --- Display SHAP Explanation ---
-    st.subheader("Prediction Explanation")
-    
-    explainer = shap.TreeExplainer(model.named_steps['classifier'], X_train_processed)
-    input_processed = model.named_steps['preprocessor'].transform(input_df)
-    shap_values = explainer.shap_values(input_processed)
-    
-    fig, ax = plt.subplots(figsize=(8, 4))
-    shap.waterfall_plot(shap.Explanation(values=shap_values[0], 
-                                          base_values=explainer.expected_value, 
-                                          data=input_processed[0],
-                                          feature_names=preprocessor.get_feature_names_out()), 
-                        show=False)
-    plt.tight_layout()
-    st.pyplot(fig, use_container_width=True)
-    st.write("The waterfall plot shows which factors push the risk score higher (red) or lower (blue).")
+    with col2:
+        st.subheader("Prediction Explanation")
+        explainer = shap.TreeExplainer(model.named_steps['classifier'], X_train_processed)
+        input_processed = model.named_steps['preprocessor'].transform(input_df)
+        shap_values = explainer.shap_values(input_processed)
 
-    # --- Display Phenotype Assignment ---
+        fig, ax = plt.subplots(figsize=(9, 4))
+        shap.waterfall_plot(shap.Explanation(values=shap_values[0], 
+                                             base_values=explainer.expected_value, 
+                                             data=input_processed[0],
+                                             feature_names=preprocessor.get_feature_names_out()), 
+                            show=False)
+        plt.tight_layout()
+        st.pyplot(fig, use_container_width=True)
+        st.caption("This plot shows how features push the risk up or down.")
+
     if risk_score > 0.5:
-        st.subheader("Patient Phenotype Profile")
+        st.markdown("### 🧬 Patient Phenotype Profile")
         patient_cluster = kmeans.predict(input_processed)[0]
         phenotype_descriptions = {
-            0: "**Phenotype A: Metabolic-Dominant** 🍔",
-            1: "**Phenotype B: Cognitive-Impairment Dominant** 🧠",
-            2: "**Phenotype C: Lifestyle-Risk** 🚬"
+            0: "**🍔 Phenotype A: Metabolic-Dominant**",
+            1: "**🧠 Phenotype B: Cognitive-Impairment Dominant**",
+            2: "**🚬 Phenotype C: Lifestyle-Risk**"
         }
         st.markdown(phenotype_descriptions.get(patient_cluster, "No specific phenotype identified."))
 else:
-    st.info("Use the sidebar to input patient data and click 'Predict' to see the results.")
-    # --- FOOTER ---
-st.markdown("---")
+    st.info("Use the sidebar to input patient data and click **Predict Risk**.")
 
-# HTML for the footer
-footer_html = """
-<div style="text-align: center;">
-    <p>Author: Ricardo Urdaneta</p>
-    <a href="https://github.com/Ricardouchub" target="_blank">
-        <button class="footer-btn">Github</button>
+# --- Footer ---
+st.markdown("---")
+st.markdown("""
+<div style='text-align: center;'>
+    <p style='color: grey;'>Developed by <b>Ricardo Urdaneta</b></p>
+    <a href="https://github.com/Ricardouchub" target="_blank" style="text-decoration:none;">
+        <button style='margin-right: 10px;' class="footer-btn">GitHub</button>
     </a>
-    <a href="https://www.linkedin.com/in/ricardourdanetacastro" target="_blank">
-        <button class="footer-btn">Linkedin</button>
+    <a href="https://www.linkedin.com/in/ricardourdanetacastro" target="_blank" style="text-decoration:none;">
+        <button class="footer-btn">LinkedIn</button>
     </a>
 </div>
-"""
-
-# CSS for the footer buttons ONLY
-footer_css = """
 <style>
 .footer-btn {
-    background-color: transparent;
-    color: #1F618D;
-    padding: 8px 20px;
-    border-radius: 8px;
-    border: 2px solid #1F618D;
+    background-color: #1F618D;
+    border: none;
+    color: white;
+    padding: 8px 16px;
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-top: 10px;
     cursor: pointer;
-    transition-duration: 0.4s;
 }
 .footer-btn:hover {
-    background-color: #1F618D;
-    color: white;
+    background-color: #154360;
 }
 </style>
-"""
-
-# Render the footer
-st.markdown(footer_html, unsafe_allow_html=True)
-st.markdown(footer_css, unsafe_allow_html=True)
+""", unsafe_allow_html=True)
