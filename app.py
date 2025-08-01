@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import shap
 import matplotlib.pyplot as plt
+import joblib
 
 # --- 1. Page Configuration ---
 st.set_page_config(page_title="Alzheimer Risk Predictor", layout="wide")
@@ -28,9 +29,23 @@ st.markdown("""
     .stButton>button:hover {
         background-color: #154360;
     }
-    .css-1d391kg .e1fqkh3o10 {
+
+    /* Sidebar background */
+    section[data-testid="stSidebar"] {
         background-color: #1F618D !important;
     }
+
+    /* Sidebar widget label and text */
+    section[data-testid="stSidebar"] label, 
+    section[data-testid="stSidebar"] .st-c1 {
+        color: white !important;
+    }
+
+    /* Sidebar slider track */
+    section[data-testid="stSidebar"] .stSlider > div > div {
+        background-color: #5499C7;
+    }
+
     </style>
 """, unsafe_allow_html=True)
 
