@@ -20,14 +20,15 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# --- 1. Load Models and Data ---
+# Load the trained models and preprocessor
 @st.cache_resource
 def load_assets():
     """Loads the trained models and preprocessor."""
-    model_pipeline = joblib.load('alzheimer_model_pipeline.pkl')
-    kmeans_model = joblib.load('kmeans_model.pkl')
-    preprocessor = joblib.load('preprocessor.pkl')
-    X_train_data = joblib.load('X_train.pkl')
+    # Add 'models/' to the path of each file
+    model_pipeline = joblib.load('models/alzheimer_model_pipeline.pkl')
+    kmeans_model = joblib.load('models/kmeans_model.pkl')
+    preprocessor = joblib.load('models/preprocessor.pkl')
+    X_train_data = joblib.load('models/X_train.pkl')
     return model_pipeline, kmeans_model, preprocessor, X_train_data
 
 model, kmeans, preprocessor, X_train = load_assets()
