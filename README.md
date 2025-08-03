@@ -11,11 +11,9 @@ This project demonstrates an end-to-end data science workflow to develop and dep
 
 ---
 
-###  Live Application
+**[Notebook](https://github.com/Ricardouchub/Alzheimers-disease-risk-prediction-project/blob/main/Notebook.ipynb)**
 
-The interactive dashboard is deployed on Streamlit Community Cloud.
-
-**[Live web app](https://alzheimers-disease-risk-prediction-project.streamlit.app/)**
+### **[Live web app](https://alzheimers-disease-risk-prediction-project.streamlit.app/)**
 
 <img width="747" height="364" alt="image" src="https://github.com/user-attachments/assets/79991e09-9575-4504-9d90-318d72e3c52a" />
 
