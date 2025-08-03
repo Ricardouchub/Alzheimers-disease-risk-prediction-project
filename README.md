@@ -15,21 +15,18 @@ This project demonstrates an end-to-end data science workflow to develop and dep
 
 The interactive dashboard is deployed on Streamlit Community Cloud.
 
-**[Click here to access the live web app](https://alzheimers-disease-risk-prediction-project.streamlit.app/)**
+**[Live web app](https://alzheimers-disease-risk-prediction-project.streamlit.app/)**
 
-<p align="center">
-  <a href="https://alzheimers-disease-risk-prediction-project.streamlit.app/" target="_blank">
-    <img src="https://i.imgur.com/uTj8f01.png" alt="Application Demo Screenshot" width="800"/>
-  </a>
-</p>
+<img width="747" height="364" alt="image" src="https://github.com/user-attachments/assets/79991e09-9575-4504-9d90-318d72e3c52a" />
+
 
 ---
 
 ### Table of Contents
 1. [Project Description](#project-description)
 2. [Key Features](#key-features)
-3. [Methodology and Phases](#methodology-and-phases)
-4. [Technologies Used](#technologies-used)
+3. [Phases](#phases)
+4. [Tools](#tools)
 5. [How to Run Locally](#how-to-run-locally)
 6. [Project Structure](#project-structure)
 7. [Author](#author)
@@ -52,7 +49,7 @@ This project aims to develop a comprehensive tool that moves beyond a simple dia
 
 ---
 
-### 3. Methodology and Phases
+### 3. Phases
 
 The project was structured into the following phases:
 
@@ -73,7 +70,7 @@ The project was structured into the following phases:
 
 ---
 
-### 4. Technologies Used
+### 4. Tools
 
 - **Programming Language:** Python
 - **Data Manipulation:** Pandas, NumPy
@@ -131,5 +128,5 @@ To run this application on your local machine, please follow these steps:
 
 **Ricardo Urdaneta**
 
-- **GitHub:** [Ricardouchub](https://github.com/Ricardouchub)
-- **LinkedIn:** [ricardourdanetacastro](https://www.linkedin.com/in/ricardourdanetacastro)
+- [**GitHub**](https://github.com/Ricardouchub)
+- [**LinkedIn**](https://www.linkedin.com/in/ricardourdanetacastro)
