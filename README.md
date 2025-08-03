@@ -28,7 +28,6 @@ This project demonstrates an end-to-end data science workflow to develop and dep
 4. [Tools](#tools)
 5. [How to Run Locally](#how-to-run-locally)
 6. [Project Structure](#project-structure)
-7. [Author](#author)
 
 ---
 
@@ -56,7 +55,7 @@ The project was structured into the following phases:
     The initial dataset was loaded, cleaned, and processed. This involved handling missing values with `SimpleImputer`, encoding categorical data, and scaling numerical features. Extensive visualizations were created to understand feature distributions and identify key correlations with the Alzheimer's diagnosis.
 
 2.  **Predictive Modeling and "Risk Score" Development:**
-    Several machine learning models were trained and evaluated, with **XGBoost** selected for its high performance. The model was trained on an imbalanced dataset using the `scale_pos_weight` parameter to ensure sensitivity to the minority class. Instead of a binary prediction, the model was designed to output a nuanced **Risk Score** from prediction probabilities.
+    Several machine learning models were trained and evaluated, with **XGBoost** selected for its high performance. Instead of a binary prediction, the model was designed to output a nuanced **Risk Score** from prediction probabilities.
 
 3.  **Patient Profiling (Clustering):**
     Unsupervised learning (**K-Means** clustering) was applied to the subset of diagnosed patients. This phase aimed to discover underlying data structures and identify distinct patient **phenotypes** based on their clinical and lifestyle profiles.
@@ -122,8 +121,7 @@ To run this application on your local machine, please follow these steps:
 
 ---
 
-### 7. Author
-
+### Author:
 **Ricardo Urdaneta**
 
 - [**GitHub**](https://github.com/Ricardouchub)
