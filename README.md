@@ -119,3 +119,17 @@ To run this application on your local machine, please follow these steps:
 ---
 
 ### 6. Project Structure
+
+- **`models/`**: Contains all the serialized, pre-trained models and objects.
+- **`app.py`**: The main script for the Streamlit web application.
+- **`requirements.txt`**: A list of all Python libraries required to run the project.
+- **`README.md`**: This documentation file.
+
+---
+
+### 7. Author
+
+**Ricardo Urdaneta**
+
+- **GitHub:** [Ricardouchub](https://github.com/Ricardouchub)
+- **LinkedIn:** [ricardourdanetacastro](https://www.linkedin.com/in/ricardourdanetacastro)
