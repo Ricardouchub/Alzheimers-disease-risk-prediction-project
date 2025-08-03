@@ -17,7 +17,8 @@ This project demonstrates an end-to-end data science workflow to develop and dep
 
 <img width="747" height="364" alt="image" src="https://github.com/user-attachments/assets/79991e09-9575-4504-9d90-318d72e3c52a" />
 
-#### **Data set: [Kaggle](https://www.kaggle.com/datasets/rabieelkharoua/alzheimers-disease-dataset)**
+**Dataset: [Kaggle](https://www.kaggle.com/dsv/8668279)**
+
 ---
 
 ### Table of Contents
@@ -27,7 +28,6 @@ This project demonstrates an end-to-end data science workflow to develop and dep
 4. [Tools](#tools)
 5. [How to Run Locally](#how-to-run-locally)
 6. [Project Structure](#project-structure)
-7. [Author](#author)
 
 ---
 
@@ -55,10 +55,10 @@ The project was structured into the following phases:
     The initial dataset was loaded, cleaned, and processed. This involved handling missing values with `SimpleImputer`, encoding categorical data, and scaling numerical features. Extensive visualizations were created to understand feature distributions and identify key correlations with the Alzheimer's diagnosis.
 
 2.  **Predictive Modeling and "Risk Score" Development:**
-    Several machine learning models were trained and evaluated, with **XGBoost** selected for its high performance. The model was trained on an imbalanced dataset using the `scale_pos_weight` parameter to ensure sensitivity to the minority class. Instead of a binary prediction, the model was designed to output a nuanced **Risk Score** from prediction probabilities.
+    Several machine learning models were trained and evaluated, with **XGBoost** selected for its high performance. Instead of a binary prediction, the model was designed to output a nuanced **Risk Score** from prediction probabilities.
 
 3.  **Patient Profiling (Clustering):**
-    Unsupervised learning (**K-Means** clustering) was applied to the subset of diagnosed patients. This phase aimed to discover underlying data structures and identify distinct patient **phenotypes** based on their clinical and lifestyle profiles.
+    **K-Means** clustering was applied to the subset of diagnosed patients. This phase aimed to discover underlying data structures and identify distinct patient **phenotypes** based on their clinical and lifestyle profiles.
 
 4.  **Interactive Dashboard:**
     A user-friendly web application was built using **Streamlit**. This dashboard integrates the predictive model and allows users to input patient data to receive a real-time risk assessment. Crucially, it incorporates **SHAP** to generate a waterfall plot that explains every prediction, making the model's decisions transparent.
@@ -121,11 +121,10 @@ To run this application on your local machine, please follow these steps:
 
 ---
 
-### 7. Author
+### Author:
+**Ricardo Urdaneta** 
 
-**Ricardo Urdaneta**
+[**LinkedIn**](https://www.linkedin.com/in/ricardourdanetacastro)
 
-- [**GitHub**](https://github.com/Ricardouchub)
-- [**LinkedIn**](https://www.linkedin.com/in/ricardourdanetacastro)
 
 
