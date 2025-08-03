@@ -17,7 +17,6 @@ This project demonstrates an end-to-end data science workflow to develop and dep
 
 <img width="747" height="364" alt="image" src="https://github.com/user-attachments/assets/79991e09-9575-4504-9d90-318d72e3c52a" />
 
-#### **Data set: [Kaggle](https://www.kaggle.com/datasets/rabieelkharoua/alzheimers-disease-dataset)**
 ---
 
 ### Table of Contents
@@ -127,5 +126,6 @@ To run this application on your local machine, please follow these steps:
 
 - [**GitHub**](https://github.com/Ricardouchub)
 - [**LinkedIn**](https://www.linkedin.com/in/ricardourdanetacastro)
+
 
 
