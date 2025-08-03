@@ -33,7 +33,7 @@ This project demonstrates an end-to-end data science workflow to develop and dep
 
 ### 1. Project Description
 
-This project aims to develop a comprehensive tool that moves beyond a simple diagnostic prediction. Instead of just answering "Does this patient have Alzheimer's?", this interactive platform provides a nuanced **Risk Score**, identifies underlying **Patient Profiles (Phenotypes)**, and offers transparent, **Explainable Insights** into its predictions, mimicking a valuable tool for a healthcare professional.
+This project aims to develop a comprehensive tool that moves beyond a simple diagnostic prediction. Instead of just answering "Does this patient have Alzheimer's?", this interactive platform provides a nuanced **Risk Score**, identifies underlying **Patient Profiles**, and offers  **Explainable Insights** into its predictions, mimicking a valuable tool for a healthcare professional.
 
 ---
 
