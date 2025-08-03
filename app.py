@@ -24,10 +24,10 @@ model, kmeans, preprocessor, X_train = load_assets()
 # Pre-process the training data once for the SHAP explainer
 X_train_processed = preprocessor.transform(X_train)
 
-# --- 2. App Title and Introduction ---
+# App Title and Introduction
 st.title("Alzheimer's Disease Risk & Phenotype Predictor")
 
-# --- NEW: PROJECT INFORMATION EXPANDER ---
+# Project Description
 with st.expander("How to use", expanded=True):
     st.write("""
         This application leverages a machine learning model to provide a comprehensive risk assessment for Alzheimer's disease based on a patient's clinical, demographic, and lifestyle data. Beyond a simple prediction, it also offers two key insights:
@@ -46,15 +46,15 @@ with st.expander("How to use", expanded=True):
         - **Patient Phenotype Profile:** For patients with a risk score above 50%, a potential clinical profile is suggested based on patterns found in the data.
     """)
 
-# --- Sidebar Header ---
+# Sidebar Header
 st.sidebar.header("Patient Data Input")
 st.sidebar.write("For any unavailable data, check the 'Unknown' box.")
 
-# --- 3. User Input Features ---
+#  User Input Features 
 def user_input_features():
     """Creates sidebar widgets for user input and returns a DataFrame."""
     
-    # --- Helper function to create input rows ---
+    # Helper function to create input rows 
     def create_input_row(label, widget_type, options, default, key_suffix, col_widths=[3,2]):
         c1, c2 = st.sidebar.columns(col_widths)
         is_unknown = c2.checkbox("Unknown", key=f"{key_suffix}_unknown")
@@ -66,7 +66,7 @@ def user_input_features():
         
         return np.nan if is_unknown else value
 
-    # --- Create all inputs using the helper function ---
+    # Create all inputs using the helper function 
     st.sidebar.subheader("Demographics")
     Age = create_input_row('Age', 'slider', (60, 90), 75, 'age')
     Gender = create_input_row('Gender', 'selectbox', ('Male', 'Female'), 'Male', 'gender')
@@ -109,7 +109,7 @@ def user_input_features():
     DifficultyCompletingTasks = create_input_row('Difficulty w/ Tasks', 'selectbox', ('No', 'Yes'), 'No', 'taskdiff')
     Forgetfulness = create_input_row('Forgetfulness', 'selectbox', ('No', 'Yes'), 'No', 'forgetful')
 
-    # --- Create the dictionary for the DataFrame ---
+    # Create the dictionary for the DataFrame
     data = {
         'Age': Age, 'Gender': np.nan if pd.isna(Gender) else (1 if Gender == 'Female' else 0),
         'Ethnicity': np.nan if pd.isna(Ethnicity) else ['Caucasian', 'African American', 'Asian', 'Other'].index(Ethnicity),
@@ -140,7 +140,7 @@ def user_input_features():
 
 input_df = user_input_features()
 
-# --- 4. Main Panel: Prediction and Explanation ---
+# Main Panel: Prediction and Explanation
 st.header("Prediction Results")
 
 if st.sidebar.button('Predict'):
@@ -148,7 +148,7 @@ if st.sidebar.button('Predict'):
     prediction_proba = model.predict_proba(input_df)
     risk_score = prediction_proba[0][1]
 
-    # --- Display Risk Score ---
+    # Display Risk Score 
     st.subheader(f"Alzheimer's Risk Score: {risk_score:.0%}")
     if risk_score > 0.6:
         st.error("High Risk")
@@ -157,7 +157,7 @@ if st.sidebar.button('Predict'):
     else:
         st.success("Low Risk")
 
-    # --- Display SHAP Explanation ---
+    # Display SHAP Explanation 
     st.subheader("Prediction Explanation")
     
     explainer = shap.TreeExplainer(model.named_steps['classifier'], X_train_processed)
@@ -174,7 +174,7 @@ if st.sidebar.button('Predict'):
     st.pyplot(fig, use_container_width=True)
     st.write("The waterfall plot shows which factors push the risk score higher (red) or lower (blue).")
 
-    # --- Display Phenotype Assignment ---
+    # Display Phenotype Assignment
     if risk_score > 0.5:
         st.subheader("Patient Phenotype Profile")
         patient_cluster = kmeans.predict(input_processed)[0]
@@ -187,9 +187,8 @@ if st.sidebar.button('Predict'):
 else:
     st.info("Use the sidebar to input patient data and click 'Predict' to see the results.")
 
-
-
-    # CSS TO WIDEN THE SIDEBAR
+# --- CSS to Style the App ---
+# CSS to Widen the Sidebar
 st.markdown(
     """
     <style>
@@ -200,7 +199,7 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
-    # --- FOOTER ---
+# --- FOOTER ---
 st.markdown("---")
 
 # HTML for the footer
