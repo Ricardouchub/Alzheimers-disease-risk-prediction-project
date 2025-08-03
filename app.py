@@ -8,18 +8,6 @@ import matplotlib.pyplot as plt
 
 st.set_page_config(layout="wide")
 
-# CSS TO WIDEN THE SIDEBAR
-st.markdown(
-    """
-    <style>
-    [data-testid="stSidebar"] {
-        width: 400px !important;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
-
 # Load the trained models and preprocessor
 @st.cache_resource
 def load_assets():
@@ -198,6 +186,20 @@ if st.sidebar.button('Predict'):
         st.markdown(phenotype_descriptions.get(patient_cluster, "No specific phenotype identified."))
 else:
     st.info("Use the sidebar to input patient data and click 'Predict' to see the results.")
+
+
+
+    # CSS TO WIDEN THE SIDEBAR
+st.markdown(
+    """
+    <style>
+    [data-testid="stSidebar"] {
+        width: 400px !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
     # --- FOOTER ---
 st.markdown("---")
 
