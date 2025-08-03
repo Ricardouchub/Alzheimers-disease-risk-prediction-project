@@ -58,7 +58,7 @@ The project was structured into the following phases:
     Several machine learning models were trained and evaluated, with **XGBoost** selected for its high performance. Instead of a binary prediction, the model was designed to output a nuanced **Risk Score** from prediction probabilities.
 
 3.  **Patient Profiling (Clustering):**
-    Unsupervised learning (**K-Means** clustering) was applied to the subset of diagnosed patients. This phase aimed to discover underlying data structures and identify distinct patient **phenotypes** based on their clinical and lifestyle profiles.
+    **K-Means** clustering was applied to the subset of diagnosed patients. This phase aimed to discover underlying data structures and identify distinct patient **phenotypes** based on their clinical and lifestyle profiles.
 
 4.  **Interactive Dashboard:**
     A user-friendly web application was built using **Streamlit**. This dashboard integrates the predictive model and allows users to input patient data to receive a real-time risk assessment. Crucially, it incorporates **SHAP** to generate a waterfall plot that explains every prediction, making the model's decisions transparent.
