@@ -7,7 +7,7 @@
   <img src="https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn" alt="scikit-learn"/>
 </p>
 
-This project demonstrates an end-to-end data science workflow to develop and deploy an interactive tool for assessing the risk of Alzheimer's disease. The application uses a machine learning model to provide a nuanced risk score, identifies distinct patient profiles through clustering, and explains its predictions using SHAP for full transparency.
+This project demonstrates an end-to-end data science workflow to develop and deploy an interactive tool for assessing the risk of Alzheimer's disease. The application uses a machine learning model to provide a risk score, identifies distinct patient profiles through clustering, and explains its predictions using SHAP.
 
 ---
 
