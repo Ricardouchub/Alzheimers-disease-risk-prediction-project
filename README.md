@@ -88,8 +88,8 @@ To run this application on your local machine, please follow these steps:
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/YourUsername/YourRepoName.git](https://github.com/YourUsername/YourRepoName.git)
-    cd YourRepoName
+    git clone [https://github.com/Ricardouchub/Alzheimers-disease-risk-prediction-project.git](https://github.com/Ricardouchub/Alzheimers-disease-risk-prediction-project.git)
+    cd Alzheimers-disease-risk-prediction-project
     ```
 
 2.  **Create and activate a virtual environment:**
