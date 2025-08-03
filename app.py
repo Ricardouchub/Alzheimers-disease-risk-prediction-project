@@ -166,7 +166,7 @@ if st.sidebar.button('Predict'):
     input_processed = model.named_steps['preprocessor'].transform(input_df)
     shap_values = explainer.shap_values(input_processed)
     
-    fig, ax = plt.subplots(figsize=(5, 3))
+    fig, ax = plt.subplots(figsize=(3, 1))
     shap.waterfall_plot(shap.Explanation(values=shap_values[0], 
                                           base_values=explainer.expected_value, 
                                           data=input_processed[0],
