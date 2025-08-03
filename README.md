@@ -122,10 +122,9 @@ To run this application on your local machine, please follow these steps:
 ---
 
 ### Author:
-**Ricardo Urdaneta**
+**Ricardo Urdaneta** 
 
-- [**GitHub**](https://github.com/Ricardouchub)
-- [**LinkedIn**](https://www.linkedin.com/in/ricardourdanetacastro)
+[**LinkedIn**](https://www.linkedin.com/in/ricardourdanetacastro)
 
 
 
