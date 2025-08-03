@@ -89,23 +89,12 @@ To run this application on your local machine, please follow these steps:
     cd Alzheimers-disease-risk-prediction-project
     ```
 
-2.  **Create and activate a virtual environment:**
-    ```bash
-    # For Windows
-    python -m venv venv
-    .\venv\Scripts\activate
-
-    # For macOS/Linux
-    python3 -m venv venv
-    source venv/bin/activate
-    ```
-
-3.  **Install the required dependencies:**
+2.  **Install the required dependencies:**
     ```bash
     pip install -r requirements.txt
     ```
 
-4.  **Run the Streamlit application:**
+3.  **Run the Streamlit application:**
     ```bash
     streamlit run app.py
     ```
