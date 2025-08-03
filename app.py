@@ -43,7 +43,8 @@ with st.expander("How to use", expanded=True):
         **Results Explained:**
         - **Alzheimer's Risk Score:** A percentage indicating the model's estimated probability of an Alzheimer's diagnosis.
         - **Prediction Explanation:** A waterfall plot showing the factors that increase risk (in red) and decrease risk (in blue).
-        - **Patient Phenotype Profile:** For patients with a risk score above 50%, a potential clinical profile is suggested based on patterns found in the data: Phenotype A: Metabolic-Dominant, Phenotype B: Cognitive-Impairment Dominant or Phenotype C: Lifestyle-Risk.
+        - **Patient Phenotype Profile:** For patients with a risk score above 50%, a potential clinical profile is suggested based on patterns found in the data: 
+             **Phenotype A:** Metabolic-Dominant, **Phenotype B:** Cognitive-Impairment Dominant or **Phenotype C:** Lifestyle-Risk.
     """)
 
 # Sidebar Header
