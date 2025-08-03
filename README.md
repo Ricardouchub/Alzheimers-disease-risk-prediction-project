@@ -62,7 +62,7 @@ The project was structured into the following phases:
 3.  **Patient Profiling (Clustering):**
     Unsupervised learning (**K-Means** clustering) was applied to the subset of diagnosed patients. This phase aimed to discover underlying data structures and identify distinct patient **phenotypes** based on their clinical and lifestyle profiles.
 
-4.  **Interactive Dashboard with Explainable AI (XAI):**
+4.  **Interactive Dashboard:**
     A user-friendly web application was built using **Streamlit**. This dashboard integrates the predictive model and allows users to input patient data to receive a real-time risk assessment. Crucially, it incorporates **SHAP** to generate a waterfall plot that explains every prediction, making the model's decisions transparent.
 
 5.  **Deployment:**
@@ -88,7 +88,7 @@ To run this application on your local machine, please follow these steps:
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/Ricardouchub/Alzheimers-disease-risk-prediction-project.git](https://github.com/Ricardouchub/Alzheimers-disease-risk-prediction-project.git)
+    git clone https://github.com/Ricardouchub/Alzheimers-disease-risk-prediction-project.git
     cd Alzheimers-disease-risk-prediction-project
     ```
 
