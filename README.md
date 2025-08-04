@@ -1,11 +1,11 @@
 # Alzheimer's Disease Risk Predictor
-
 <p align="left">
-  <img src="https://img.shields.io/badge/Project_Status-Completed-green?style=for-the-badge" alt="Project Status: Completed"/>
-  <img src="https://img.shields.io/badge/Python-3.9+-blue?style=for-the-badge&logo=python" alt="Python Version"/>
-  <img src="https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit" alt="Streamlit"/>
-  <img src="https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn" alt="scikit-learn"/>
+  <img src="https://img.shields.io/badge/Project_Status-Completed-2ECC71?style=flat-square&logo=checkmarx&logoColor=white" alt="Project Status: Completed"/>
+  <img src="https://img.shields.io/badge/Python-3.9%2B-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python Version"/>
+  <img src="https://img.shields.io/badge/Streamlit-UI_App-FF4B4B?style=flat-square&logo=streamlit&logoColor=white" alt="Streamlit"/>
+  <img src="https://img.shields.io/badge/scikit--learn-ML_Model-F7931E?style=flat-square&logo=scikit-learn&logoColor=white" alt="scikit-learn"/>
 </p>
+
 
 This project demonstrates an end-to-end data science workflow to develop and deploy an interactive tool for assessing the risk of Alzheimer's disease. The application uses a machine learning model to provide a risk score, identifies distinct patient profiles through clustering, and explains its predictions using SHAP.
 
