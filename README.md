@@ -21,7 +21,7 @@ This project demonstrates an end-to-end data science workflow to develop and dep
 
 ---
 
-### Table of Contents
+## Table of Contents
 * [Project Description](#project-description)
 * [Key Features](#key-features)
 * [Phases](#phases)
@@ -31,13 +31,13 @@ This project demonstrates an end-to-end data science workflow to develop and dep
 
 ---
 
-### 1. Project Description
+## Project Description
 
 This project aims to develop a comprehensive tool that moves beyond a simple diagnostic prediction. Instead of just answering "Does this patient have Alzheimer's?", this interactive platform provides a nuanced **Risk Score**, identifies underlying **Patient Profiles**, and offers  **Explainable Insights** into its predictions, mimicking a valuable tool for a healthcare professional.
 
 ---
 
-### 2. Key Features
+## Key Features
 
 - **Predictive Risk Scoring:** Utilizes an XGBoost model to generate a precise probability score (0-100%) of Alzheimer's risk.
 - **Explainable AI (XAI):** Integrates SHAP (SHapley Additive exPlanations) to create a visual breakdown of which factors contributed to each prediction.
@@ -47,7 +47,7 @@ This project aims to develop a comprehensive tool that moves beyond a simple dia
 
 ---
 
-### 3. Phases
+## Phases
 
 The project was structured into the following phases:
 
@@ -68,7 +68,7 @@ The project was structured into the following phases:
 
 ---
 
-### 4. Tools
+## Tools
 
 - **Programming Language:** Python
 - **Data Manipulation:** Pandas, NumPy
@@ -79,7 +79,7 @@ The project was structured into the following phases:
 
 ---
 
-### 5. How to Run Locally
+## How to Run Locally
 
 To run this application on your local machine, please follow these steps:
 
@@ -101,7 +101,7 @@ To run this application on your local machine, please follow these steps:
 
 ---
 
-### 6. Project Structure
+## Project Structure
 
 - **`Notebook.ipynb`**: Main notebook with EDA, visualizations and models training and evaluation.
 - **`/models/`**: Contains all the serialized, pre-trained models and objects.
@@ -110,7 +110,7 @@ To run this application on your local machine, please follow these steps:
 
 ---
 
-### Author:
+## Author:
 **Ricardo Urdaneta** 
 
 [**LinkedIn**](https://www.linkedin.com/in/ricardourdanetacastro)
