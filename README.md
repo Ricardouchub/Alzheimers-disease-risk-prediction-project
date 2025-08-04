@@ -27,7 +27,8 @@ This project demonstrates an end-to-end data science workflow to develop and dep
 * [Phases](#phases)
 * [Tools](#tools)
 * [How to Run Locally](#how-to-run-locally)
-* [Project Structure](#project-structure)
+* [Repository Structure](#repository-structure)
+* [Author](#author)
 
 ---
 
@@ -101,7 +102,7 @@ To run this application on your local machine, please follow these steps:
 
 ---
 
-## Project Structure
+## Repository Structure
 
 - **`Notebook.ipynb`**: Main notebook with EDA, visualizations and models training and evaluation.
 - **`/models/`**: Contains all the serialized, pre-trained models and objects.
