@@ -22,12 +22,12 @@ This project demonstrates an end-to-end data science workflow to develop and dep
 ---
 
 ### Table of Contents
-1. [Project Description](#project-description)
-2. [Key Features](#key-features)
-3. [Phases](#phases)
-4. [Tools](#tools)
-5. [How to Run Locally](#how-to-run-locally)
-6. [Project Structure](#project-structure)
+* [Project Description](#project-description)
+* [Key Features](#key-features)
+* [Phases](#phases)
+* [Tools](#tools)
+* [How to Run Locally](#how-to-run-locally)
+* [Project Structure](#project-structure)
 
 ---
 
