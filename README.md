@@ -104,7 +104,7 @@ To run this application on your local machine, please follow these steps:
 ### 6. Project Structure
 
 - **`Notebook.ipynb`**: Main notebook with EDA, visualizations and models training and evaluation.
-- **`models/`**: Contains all the serialized, pre-trained models and objects.
+- **`/models/`**: Contains all the serialized, pre-trained models and objects.
 - **`app.py`**: The main script for the Streamlit web application.
 - **`requirements.txt`**: A list of all Python libraries required to run the project.
 
