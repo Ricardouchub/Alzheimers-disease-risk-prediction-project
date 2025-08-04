@@ -25,7 +25,7 @@ model, kmeans, preprocessor, X_train = load_assets()
 X_train_processed = preprocessor.transform(X_train)
 
 # App Title and Introduction
-st.title("Alzheimer's Disease Risk & Phenotype Predictor")
+st.image("img/banner.png", use_column_width='always')
 
 # Project Description
 with st.expander("How to use", expanded=True):
