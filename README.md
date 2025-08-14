@@ -24,7 +24,6 @@ This project demonstrates an end-to-end data science workflow to develop and dep
 * [Key Features](#key-features)
 * [Phases](#phases)
 * [Tools](#tools)
-* [How to Run Locally](#how-to-run-locally)
 * [Repository Structure](#repository-structure)
 * [Author](#author)
 
@@ -75,28 +74,6 @@ The project was structured into the following phases:
 - **Explainable AI:** SHAP
 - **Web Framework:** Streamlit
 - **Data Visualization:** Matplotlib, Seaborn
-
----
-
-## How to Run Locally
-
-To run this application on your local machine, please follow these steps:
-
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/Ricardouchub/Alzheimers-disease-risk-prediction-project.git
-    cd Alzheimers-disease-risk-prediction-project
-    ```
-
-2.  **Install the required dependencies:**
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-3.  **Run the Streamlit application:**
-    ```bash
-    streamlit run app.py
-    ```
 
 ---
 
