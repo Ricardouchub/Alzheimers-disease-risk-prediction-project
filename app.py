@@ -217,7 +217,6 @@ footer_html = """
 </div>
 """
 
-# CSS for the footer buttons ONLY
 footer_css = """
 <style>
 .footer-btn {
